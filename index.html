@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+        .background{
+            background: rgb(255, 242, 224);
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .header{
+            background-color: rgb(227, 167, 0);
+            color: white;
+            width: 39%;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .todo_box{
+            width: 36%;
+            background: rgb(89, 136, 129);
+            padding: 20px;
+            border-radius:  10px;
+        }
+        input{
+            height: 35px;
+            width: 130%;
+            border-radius: 5px;
+            border: none;
+        }
+        .inputs{
+            display: flex;
+            flex-direction: row;
+            /* padding: 1px; */
+            padding-top: 10px;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        button{
+            padding: 5x;
+            width: 20%;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            background: rgb(12, 203, 12);
+            color: white;
+        }
+        #values{
+            background: rgb(203, 245, 248);
+            padding-top: 0px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+    </style>
+    <div class="background">
+
+        <div class="header">
+            <h1>TODO LIST</h1>
+        </div>
+
+
+        <div class="todo_box">
+            <div class="todoMain">
+                <div class="inputs">
+                    <input type="text" name="" id="id"> <button onclick="addData()"><b>ADD</b></button>
+                </div>
+                <div id="values"></div>
+
+
+                <button onclick="delet_todo()">Clear All Data</button><br><br>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <script src="class.js"></script>
+    <script>
+
+        var array = []
+        function addData() {
+            let id1 = document.getElementById('id').value
+
+
+            let obj = new Student(id1)
+            array.push(obj)
+            display()
+
+            document.getElementById('id').value = ""
+            document.getElementById('name').value = ""
+            document.getElementById('role').value = ""
+
+            console.log(array)
+
+        }
+
+        function display() {
+            html = `<table>
+            <tr>
+                <th>Your Todo's</th> 
+            </tr>
+            </table>`
+            for (let x of array) {
+                html += x.display()
+
+            }
+
+            document.getElementById('values').innerHTML = html
+
+
+        }
+        function delet_todo() {
+            console.log("hi")
+            document.getElementById('values').innerHTML = " "
+        }
+    </script>
+</body>
+
+</html>
